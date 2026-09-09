@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A professional multi-page scientific calculator for mathematics, physics, chemistry, conversions, graphs and calculation history.">
+  <title>CalcSphere Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><div class="brand-mark">∑</div><div><strong>CalcSphere</strong><span>PRO CALCULATOR</span></div></div>
+      <nav class="nav">
+        <a class="nav-link active" href="#dashboard" data-page="dashboard">⌂ <span>Dashboard</span></a>
+        <a class="nav-link" href="#scientific" data-page="scientific">∑ <span>Scientific</span></a>
+        <a class="nav-link" href="#mathematics" data-page="mathematics">π <span>Mathematics</span></a>
+        <a class="nav-link" href="#physics" data-page="physics">⚛ <span>Physics</span></a>
+        <a class="nav-link" href="#chemistry" data-page="chemistry">⚗ <span>Chemistry</span></a>
+        <a class="nav-link" href="#conversions" data-page="conversions">⇄ <span>Conversions</span></a>
+        <a class="nav-link" href="#graphs" data-page="graphs">⌁ <span>Graphs & Charts</span></a>
+        <a class="nav-link" href="#statistics" data-page="statistics">▥ <span>Statistics</span></a>
+        <a class="nav-link" href="#finance" data-page="finance">₦ <span>Finance</span></a>
+        <a class="nav-link" href="#history" data-page="history">◷ <span>History</span></a>
+        <a class="nav-link" href="#ai" data-page="ai">✦ <span>AI Assistant</span></a>
+        <a class="nav-link" href="#about" data-page="about">ⓘ <span>About</span></a>
+      </nav>
+      <div class="sidebar-bottom"><button id="themeBtn" class="side-action">◐ <span>Toggle theme</span></button><button id="clearAllBtn" class="side-action">⌫ <span>Clear history</span></button></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><button id="menuBtn" class="icon-btn">☰</button><div class="breadcrumb" id="breadcrumb">Dashboard</div><div class="top-actions"><span id="clock"></span><button id="topThemeBtn" class="icon-btn">◐</button></div></header>
+      <div id="app" class="content"></div>
+    </main>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
