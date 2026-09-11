@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A professional multi-page scientific calculator for mathematics, physics, chemistry, conversions, graphs and calculation history.">
+  <meta name="theme-color" content="#3157d5">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="CalcSphere Pro">
   <title>CalcSphere Pro</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -31,7 +38,7 @@
       <div class="sidebar-bottom"><button id="exitBtn" class="side-action exit-action" type="button" hidden>← <span>Exit subject</span></button><button id="themeBtn" class="side-action">◐ <span>Toggle theme</span></button><button id="clearAllBtn" class="side-action">⌫ <span>Clear history</span></button></div>
     </aside>
     <main class="main">
-      <header class="topbar"><button id="menuBtn" class="icon-btn">☰</button><div class="breadcrumb" id="breadcrumb">Dashboard</div><div class="top-actions"><span id="clock"></span><button id="topThemeBtn" class="icon-btn">◐</button></div></header>
+      <header class="topbar"><button id="menuBtn" class="icon-btn">☰</button><div class="breadcrumb" id="breadcrumb">Dashboard</div><div class="top-actions"><span id="clock"></span><button id="installBtn" class="btn install-btn" type="button" hidden>Install app</button><button id="topThemeBtn" class="icon-btn">◐</button></div></header>
       <div id="app" class="content"></div>
     </main>
   </div>

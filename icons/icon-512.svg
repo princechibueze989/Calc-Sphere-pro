@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="106" fill="#3157d5"/>
+  <circle cx="256" cy="256" r="165" fill="#243fa8" opacity=".45"/>
+  <path d="M155 155h202M155 256h202M155 357h202M205 115v282M307 115v282" stroke="#fff" stroke-width="24" stroke-linecap="round" opacity=".9"/>
+  <text x="256" y="296" text-anchor="middle" font-family="Arial,sans-serif" font-size="155" font-weight="700" fill="#fff">∑</text>
+</svg>

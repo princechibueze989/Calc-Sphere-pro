@@ -1,6 +1,7 @@
 /* CalcSphere Pro — client-side calculation engine */
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const app=$("#app"), toast=$("#toast");
+let installPrompt=null;
 let historyData=JSON.parse(localStorage.getItem("calcsphere_history")||"[]");
 let settings=JSON.parse(localStorage.getItem("calcsphere_settings")||'{"theme":"light"}');
 document.documentElement.dataset.theme=settings.theme;
@@ -122,6 +123,10 @@ function plot(){let c=$("#graphCanvas");if(!c)return;let ctx=c.getContext("2d"),
 function localAnswer(){let q=$("#aiQuestion").value.toLowerCase(),ans="I can explain calculator topics locally. Try asking about a formula, unit conversion, or basic science concept.";if(q.includes("ideal gas"))ans="The ideal gas law is PV = nRT. P is pressure, V is volume, n is moles, R is the gas constant, and T is absolute temperature in kelvin. It models gases approximately under many ordinary conditions.";else if(q.includes("newton"))ans="Newton’s second law states F = ma: net force equals mass multiplied by acceleration. If mass is in kg and acceleration in m/s², force is in newtons.";else if(q.includes("mole"))ans="A mole is an amount of substance. For a sample with known mass and molar mass, n = m/M.";else if(q.includes("quadratic"))ans="For ax² + bx + c = 0, the roots are x = (−b ± √(b²−4ac))/(2a). The discriminant determines whether roots are real or complex.";else if(q.includes("derivative"))ans="A derivative describes instantaneous rate of change. For a power x^n, the derivative is n·x^(n−1).";else if(q.includes("convert"))ans="Choose Conversions from the menu, select a category, enter a value and choose the source and target units.";$("#aiOut").textContent=ans}
 function render(){let key=location.hash.slice(1)||"dashboard";if(!pages[key])key="dashboard";app.innerHTML=pages[key]();$$(".nav-link").forEach(a=>a.classList.toggle("active",a.dataset.page===key));$("#breadcrumb").textContent=key[0].toUpperCase()+key.slice(1);$("#exitBtn").hidden=key==="dashboard";setup();if(key==="history")renderHistory();$$("[data-go]").forEach(b=>b.onclick=()=>location.hash=b.dataset.go);if(window.innerWidth<=760)$("#sidebar").classList.remove("open")}
 function toggleTheme(){settings.theme=settings.theme==="dark"?"light":"dark";localStorage.setItem("calcsphere_settings",JSON.stringify(settings));document.documentElement.dataset.theme=settings.theme}
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;$("#installBtn").hidden=false});
+window.addEventListener("appinstalled",()=>{installPrompt=null;$("#installBtn").hidden=true;notify("CalcSphere installed")});
+$("#installBtn").onclick=async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$("#installBtn").hidden=true};
+if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
 $("#themeBtn").onclick=toggleTheme;$("#topThemeBtn").onclick=toggleTheme;$("#clearAllBtn").onclick=()=>{historyData=[];save();notify("History cleared")};$("#menuBtn").onclick=()=>$("#sidebar").classList.toggle("open");window.addEventListener("hashchange",render);
 $("#exitBtn").onclick=()=>{location.hash="dashboard";window.scrollTo({top:0,behavior:"smooth"})};
 setInterval(()=>$("#clock").textContent=new Date().toLocaleTimeString(),1000);render();
