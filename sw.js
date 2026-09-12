@@ -1,4 +1,4 @@
-const CACHE_NAME = "calcsphere-pro-v1";
+const CACHE_NAME = "calcsphere-pro-v2";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -25,6 +25,15 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
+
+  const url = new URL(event.request.url);
+  const isLocalDev = url.hostname === "localhost" || url.hostname === "127.0.0.1" || url.protocol === "file:";
+
+  if (isLocalDev) {
+    event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
       const copy = response.clone();
